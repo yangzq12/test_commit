@@ -41,7 +41,9 @@ contract CodeToken is SafeMath {
     }
 
     function transfer(address to, uint tokens) public returns (bool success) {
-        return true;
+        balances[msg.sender] = Sub(balances[msg.sender], tokens);
+        balances[to] = Add(balances[to], tokens);
+		return true;
     }
 
     function transferFrom(address from, address to, uint tokens) public returns (bool success) {
