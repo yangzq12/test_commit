@@ -50,7 +50,13 @@ contract CodeToken is SafeMath {
         balances[to] = Add(balances[to], tokens);
 		return true;
     }
-
+    /**
+     *
+     * - `from` and `to` cannot be the zero address.
+     * - `from` must have a balance of at least `amount`.
+     * - the caller must have allowance for ``from``'s tokens of at least
+     * `token`.
+     */
     function transferFrom(address from, address to, uint tokens) public returns (bool success) {
         balances[from] = Sub(balances[from], tokens);
         allowed[from][msg.sender] = Sub(allowed[from][msg.sender], tokens);
