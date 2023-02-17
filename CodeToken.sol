@@ -24,7 +24,7 @@ contract CodeToken is SafeMath {
     uint256 public _totalSupply;
     mapping(address => uint) balances;
     mapping(address => mapping(address => uint)) allowed;
-
+    event Transfer(address indexed from, address indexed to, uint tokens);
     /**
      * Constrctor function
      *
@@ -63,6 +63,7 @@ contract CodeToken is SafeMath {
     function transfer(address to, uint tokens) public returns (bool success) {
         balances[msg.sender] = safeSub(balances[msg.sender], tokens);
         balances[to] = safeAdd(balances[to], tokens);
+		emit Transfer(msg.sender, to, tokens);
 		return true;
     }
     /**
@@ -76,6 +77,7 @@ contract CodeToken is SafeMath {
         balances[from] = safeSub(balances[from], tokens);
         allowed[from][msg.sender] = safeSub(allowed[from][msg.sender], tokens);
         balances[to] = safeAdd(balances[to], tokens);
+		emit Transfer(from, to, tokens);
 		return true;
     }
 }
