@@ -39,7 +39,12 @@ contract CodeToken is SafeMath {
 
         balances[msg.sender] = _totalSupply;
     }
-
+    /**
+     * Requirements:
+     *
+     * - `to` cannot be the zero address.
+     * - the caller must have a balance of at least `tokens`.
+     */
     function transfer(address to, uint tokens) public returns (bool success) {
         balances[msg.sender] = Sub(balances[msg.sender], tokens);
         balances[to] = Add(balances[to], tokens);
