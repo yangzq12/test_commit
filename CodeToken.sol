@@ -20,9 +20,8 @@ contract CodeToken is SafeMath {
     string public name;
     string public symbol;
     uint8 public decimals; // 18 decimals is the strongly suggested default, avoid changing it
-
+    
     uint256 public _totalSupply;
-
     mapping(address => uint) balances;
     mapping(address => mapping(address => uint)) allowed;
 
@@ -38,6 +37,22 @@ contract CodeToken is SafeMath {
         _totalSupply = 100000000000000000000000000;
 
         balances[msg.sender] = _totalSupply;
+    }
+	/**
+     * @dev See {IERC20-balanceOf}.
+     */
+    function balanceOf(address account) public view returns (uint256) {
+        return balances[account];
+    }
+	function decimals() public view returns (uint8) {
+        return 18;
+    }
+
+    /**
+     * @dev See {IERC20-totalSupply}.
+     */
+    function totalSupply() public view returns (uint256) {
+        return _totalSupply;
     }
     /**
      * Requirements:
