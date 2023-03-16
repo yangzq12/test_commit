@@ -1,4 +1,4 @@
-add CodeNFT.sol file for simple ERC20 Token
+d CodeNFT.sol file for simple ERC20 Token
 Weird ERC20 Tokens
 This repository contains minimal example implementations in Solidity of ERC20 tokens with behaviour that may be surprising or unexpected. All the tokens in this repo are based on real tokens, many of which have been used to exploit smart contract systems in the past. It is hoped that these example implementations will be of use to developers and auditors.
 
